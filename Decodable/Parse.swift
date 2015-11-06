@@ -41,6 +41,45 @@ public func parse<T>(json: AnyObject, path: [String], decode: (AnyObject throws 
     
 }
 
+public func parse<T>(json: AnyObject, path: [String], decode: (AnyObject throws -> T?)) throws -> T? {
+    var object = json
+    if let currentDict = try? NSDictionary.decode(json) {
+        guard let objectForKeyPath = try currentDict.objectForKeyPath(path) else {
+            return nil
+        }
+        object = objectForKeyPath
+    }
+    return try catchAndRethrow(json, path) { try decode(object) }
+}
+
+
+extension NSDictionary {
+    func objectForKeyPath(path: [AnyObject]) throws -> AnyObject? {
+        // if path is empty - return nil
+        guard path.isEmpty == false else {
+            return nil
+        }
+        
+        // if path is one key long - return an object for the key (might be nil)
+        if path.count == 1, let key = path.first {
+            return objectForKey(key)
+        }
+        
+        // if path contain more than one key - get an object for the first key and create remaining path by removing the first key
+        var remainingPath = path
+        let firstKey = remainingPath.removeFirst()
+        // if there is no object for key - return nil
+        guard let remainingObject = objectForKey(firstKey) else {
+            return nil
+        }
+        
+        // decode object - will throw if it is not a dictionary
+        let remainingDict = try NSDictionary.decode(remainingObject)
+        // run recursively on remaining dictionary with remaining path
+        return try remainingDict.objectForKeyPath(remainingPath)
+    }
+}
+
 
 // MARK: - Helpers
 

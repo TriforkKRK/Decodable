@@ -98,3 +98,6 @@ private func parse<T>(json: AnyObject, path: String, decode: (AnyObject throws -
     return try parse(json, path: path.toJSONPathArray(), decode: decode)
 }
 
+private func parse<T>(json: AnyObject, path: String, decode: (AnyObject throws -> T?)) throws -> T? {
+    return try parse(json, path: path.toJSONPathArray(), decode: decode)
+}

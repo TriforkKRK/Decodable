@@ -164,7 +164,7 @@ class DecodableTests: XCTestCase {
         
         // when
         do {
-            try parse(json, path: ["key"], decode: Repository.decode)
+            try parse(json, path: ["key"], decode: Repository.decode) as Repository
         } catch DecodingError.MissingKey {
             XCTFail("it should not throw this exception")
         } catch DecodingError.TypeMismatch(_, Int.self, let info) {
@@ -190,6 +190,19 @@ class DecodableTests: XCTestCase {
             XCTAssertNotNil(info.object)
         } catch {
             XCTFail("should not throw \(error)")
+        }
+    }
+    
+    func testDecodeRepositoryMissingOptionalKeyExampleShouldSucceed() {
+        // given
+        let json = readJsonFile("MissingOptionalKey.json")
+        
+        // when
+        do {
+            let repository = try Repository.decode(json)
+            XCTAssertEqual(repository.optionalActive, nil)
+        } catch {
+            XCTFail("it should not throw an exception")
         }
     }
 }
