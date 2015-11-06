@@ -14,13 +14,13 @@
  */
 public extension RawRepresentable where Self:Decodable {
     
-    static func decode(json: AnyObject) throws -> Self {
+    init(json: AnyObject) throws {
         guard let rawValue = json as? Self.RawValue else {
             throw DecodingError.TypeMismatch(type: json.dynamicType, expectedType: Self.RawValue.self, info: DecodingError.Info(object: json))
         }
         guard let rawRepresentable = Self(rawValue: rawValue) else {
             throw DecodingError.UnexpectedValue(value: rawValue as! AnyObject, info: DecodingError.Info(object: json))
         }
-        return rawRepresentable
+        self = rawRepresentable
     }
 }

@@ -14,7 +14,7 @@ public enum LKUserRole: String, Decodable {
     case Admin = "admin"
     
     public static func decode(json: AnyObject) throws -> LKUserRole {
-        let string = try String.decode(json)
+        let string = try String(json: json)
         guard let role = LKUserRole(rawValue: string) else {
             throw Error()
         }

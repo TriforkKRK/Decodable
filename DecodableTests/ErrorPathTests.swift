@@ -9,28 +9,39 @@
 import XCTest
 @testable import Decodable
 
-private struct Color: Decodable {
+private struct Color {
     let name: String
-    
-    private static func decode(json: AnyObject) throws -> Color {
-        return try Color(name: json => "name")
+}
+
+extension Color: Decodable {
+    init(json: AnyObject) throws {
+        self = try Color(
+            name: json => "name")
     }
 }
 
-private struct Apple: Decodable {
+private struct Apple {
     let id: Int
     let color: Color?
     
-    private static func decode(json: AnyObject) throws -> Apple {
-        return try Apple(id: json => "id", color: json => "color")
+}
+
+extension Apple: Decodable {
+    init(json: AnyObject) throws {
+        self = try Apple(
+            id: json => "id",
+            color: json => "color")
     }
 }
 
-private struct Tree: Decodable {
+private struct Tree {
     let apples: [Apple]
-    
-    private static func decode(json: AnyObject) throws -> Tree {
-        return try Tree(apples: json => "apples")
+}
+
+extension Tree: Decodable {
+    init(json: AnyObject) throws {
+        self = try Tree(
+            apples: json => "apples")
     }
 }
 
@@ -53,7 +64,7 @@ class ErrorPathTests: XCTestCase {
     func testNestedUnexpectedNSNull() {
         let dict: NSDictionary = ["id": 1, "color": ["name": NSNull()]]
         do {
-            let apple = try Apple.decode(dict)
+            let apple = try Apple(json: dict)
             print(apple)
             XCTFail()
         } catch DecodingError.TypeMismatch(NSNull.self, _, _) {
@@ -83,7 +94,7 @@ class ErrorPathTests: XCTestCase {
             ["id": 2, "color": ["name": "green"]],
             ["id": 2, "color": ["name": 3]]]]
         do {
-            try Tree.decode(dict)
+            try Tree(json: dict)
             XCTFail()
         } catch DecodingError.TypeMismatch(let type, String.self, let info) {
             XCTAssertEqual(String(type), "__NSCFNumber")

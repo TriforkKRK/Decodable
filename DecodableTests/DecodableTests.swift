@@ -24,7 +24,7 @@ class DecodableTests: XCTestCase {
         
         // when
         do {
-            let repository = try Repository.decode(json)
+            let repository = try Repository(json: json)
             // then
             XCTAssertEqual(repository.id, json["id"] as? Int)
             XCTAssertEqual(repository.name, json["name"] as? String)
@@ -130,7 +130,7 @@ class DecodableTests: XCTestCase {
         
         // when
         do {
-            try Repository.decode(json)
+            try Repository(json: json)
         } catch DecodingError.MissingKey(let key, _) {
             // then
             XCTAssertEqual(key, "id")
@@ -147,7 +147,7 @@ class DecodableTests: XCTestCase {
         
         // when
         do {
-            try Repository.decode(json)
+            try Repository(json: json)
         } catch DecodingError.MissingKey {
             XCTFail("it should not throw this exception")
         } catch DecodingError.TypeMismatch(_, Int.self, let info) {
@@ -164,7 +164,7 @@ class DecodableTests: XCTestCase {
         
         // when
         do {
-            try parse(json, path: ["key"], decode: Repository.decode) as Repository
+            try parse(json, path: ["key"], decode: Repository.init) as Repository
         } catch DecodingError.MissingKey {
             XCTFail("it should not throw this exception")
         } catch DecodingError.TypeMismatch(_, Int.self, let info) {
@@ -182,7 +182,7 @@ class DecodableTests: XCTestCase {
         
         // when
         do {
-            try Repository.decode(jsonString)
+            try Repository(json: jsonString)
         } catch DecodingError.MissingKey {
             XCTFail("it should not throw this exception")
         } catch DecodingError.TypeMismatch(_, NSDictionary.self, let info) {
@@ -199,7 +199,7 @@ class DecodableTests: XCTestCase {
         
         // when
         do {
-            let repository = try Repository.decode(json)
+            let repository = try Repository(json: json)
             XCTAssertEqual(repository.optionalActive, nil)
         } catch {
             XCTFail("it should not throw an exception")
