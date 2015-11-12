@@ -13,12 +13,12 @@ public protocol Decodable {
 }
 
 extension NSDictionary {
-    public static func decode(j: AnyObject) throws -> NSDictionary {
-        guard let result = j as? NSDictionary else {
-            let info = DecodingError.Info(object: j)
-            throw DecodingError.TypeMismatch(type: j.dynamicType, expectedType: self, info: info)
+    convenience init(json: AnyObject) throws {
+        guard let result = json as? NSDictionary else {
+            let info = DecodingError.Info(object: json)
+            throw DecodingError.TypeMismatch(type: json.dynamicType, expectedType: NSDictionary.self, info: info)
         }
-        return result
+        self.init(dictionary: result)
     }
 }
 
