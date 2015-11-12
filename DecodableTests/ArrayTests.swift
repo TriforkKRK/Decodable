@@ -117,52 +117,8 @@ class DecodableArrayTests: XCTestCase {
         let value = ["A", "B", "C"]
         let dictionary: NSDictionary = [key: value]
         // when
-        let array = try? [String].decode(dictionary => "key")
+        let array = try? [String](json: dictionary => "key")
         // then
         XCTAssertEqual(array!, value)
-    }
-    
-    func testDecodeSafeArrayCatchTypeExceptionMismatch() {
-        // given
-        let key = "key"
-        let value = ["A", 2, "B"]
-        let dictionary: NSDictionary = [key: value]
-        // when
-        let array = try! [String].decode(dictionary => "key", ignoreInvalidObjects: true)
-        // then
-        XCTAssertEqual(array, ["A", "B"])
-    }
-    
-    func testDecodeSafeArrayCatchTypeMismatchExceptionInObjects() {
-        // given
-        let key = "key"
-        let value = [["id": "007", "login": "mradams"], ["id": 1, "login": "jenglish"]]
-        let dictionary: NSDictionary = [key: value]
-        // when
-        let array = try! [Owner].decode(dictionary => "key", ignoreInvalidObjects: true)
-        // then
-        XCTAssertEqual(array, [Owner(id: 1, login: "jenglish")])
-    }
-    
-    func testDecodeSafeArrayCatchJSONNotObjectException() {
-        // given
-        let key = "key"
-        let value = [["id": 7, "login": "mradams"], 2]
-        let dictionary: NSDictionary = [key: value]
-        // when
-        let array = try! [Owner].decode(dictionary => "key", ignoreInvalidObjects: true)
-        // then
-        XCTAssertEqual(array, [Owner(id: 7, login: "mradams")])
-    }
-    
-    func testDecodeSafeArrayCatchMissingKeyException() {
-        // given
-        let key = "key"
-        let value = [["login": "mradams"], ["id": 1, "login": "jenglish"]]
-        let dictionary: NSDictionary = [key: value]
-        // when
-        let array = try! [Owner].decode(dictionary => key, ignoreInvalidObjects: true)
-        // then
-        XCTAssertEqual(array, [Owner(id: 1, login: "jenglish")])
     }
 }

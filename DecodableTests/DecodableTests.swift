@@ -60,7 +60,7 @@ class DecodableTests: XCTestCase {
         var result: [Repository] = []
         measureBlock {
             do {
-                result = try [Repository].decode(array)
+                result = try [Repository](json: array)
             } catch let error {
                 XCTFail("\(error)")
             }
