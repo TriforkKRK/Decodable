@@ -33,8 +33,7 @@ extension Array where Element: Decodable {
 }
 
 extension Dictionary where Key: Decodable, Value: Decodable {
-    public static func decode(j: AnyObject) throws -> Dictionary {
-        return try decodeDictionary(Key.init)(elementDecodeClosure: Value.init)(json: j)
+    init(json: AnyObject) throws {
+        self = try decodeDictionary(Key.init)(elementDecodeClosure: Value.init)(json: json)
     }
-    
 }
