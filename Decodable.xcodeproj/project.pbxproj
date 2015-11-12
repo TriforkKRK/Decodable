@@ -14,6 +14,16 @@
 		57FCDE5C1BA283C900130C48 /* Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFAB8111B7CFA9500E2D724 /* Parse.swift */; };
 		57FCDE5D1BA283C900130C48 /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE7B57C1B4CA01400837609 /* Decodable.swift */; };
 		57FCDE5E1BA283C900130C48 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F956D1E1B4D6FF700243072 /* Operators.swift */; };
+		6580F0521BECA7E50033FFA7 /* MissingOptionalKey.json in Resources */ = {isa = PBXBuildFile; fileRef = 6580F0501BECA7D90033FFA7 /* MissingOptionalKey.json */; };
+		6580F0531BECA7E60033FFA7 /* MissingOptionalKey.json in Resources */ = {isa = PBXBuildFile; fileRef = 6580F0501BECA7D90033FFA7 /* MissingOptionalKey.json */; };
+		6580F0551BECD5BC0033FFA7 /* ParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580F0541BECD5BC0033FFA7 /* ParseTests.swift */; };
+		6580F0561BECD5BC0033FFA7 /* ParseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580F0541BECD5BC0033FFA7 /* ParseTests.swift */; };
+		6580F0581BECE74B0033FFA7 /* RawRepresentableDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580F0571BECE74B0033FFA7 /* RawRepresentableDecodable.swift */; };
+		6580F0591BECE74B0033FFA7 /* RawRepresentableDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580F0571BECE74B0033FFA7 /* RawRepresentableDecodable.swift */; };
+		6580F05A1BECE74B0033FFA7 /* RawRepresentableDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580F0571BECE74B0033FFA7 /* RawRepresentableDecodable.swift */; };
+		6580F05B1BECE74B0033FFA7 /* RawRepresentableDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580F0571BECE74B0033FFA7 /* RawRepresentableDecodable.swift */; };
+		6580F05D1BECEF070033FFA7 /* RawRepresentableDecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580F05C1BECEF070033FFA7 /* RawRepresentableDecodableTests.swift */; };
+		6580F05E1BECEF070033FFA7 /* RawRepresentableDecodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6580F05C1BECEF070033FFA7 /* RawRepresentableDecodableTests.swift */; };
 		8F012EF51BB5A920007D0B5C /* Castable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F012EF41BB5A920007D0B5C /* Castable.swift */; };
 		8F012EF61BB5A920007D0B5C /* Castable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F012EF41BB5A920007D0B5C /* Castable.swift */; };
 		8F012EF71BB5A920007D0B5C /* Castable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F012EF41BB5A920007D0B5C /* Castable.swift */; };
@@ -83,6 +93,10 @@
 		17FB80F71B530FED0012F106 /* Decodable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Decodable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17FB81001B530FED0012F106 /* DecodableTests-Mac.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DecodableTests-Mac.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		57FCDE651BA283C900130C48 /* Decodable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Decodable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6580F0501BECA7D90033FFA7 /* MissingOptionalKey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = MissingOptionalKey.json; path = JSONExamples/MissingOptionalKey.json; sourceTree = "<group>"; };
+		6580F0541BECD5BC0033FFA7 /* ParseTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseTests.swift; sourceTree = "<group>"; };
+		6580F0571BECE74B0033FFA7 /* RawRepresentableDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawRepresentableDecodable.swift; sourceTree = "<group>"; };
+		6580F05C1BECEF070033FFA7 /* RawRepresentableDecodableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawRepresentableDecodableTests.swift; sourceTree = "<group>"; };
 		8F012EEF1BB414D4007D0B5C /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; };
 		8F012EF41BB5A920007D0B5C /* Castable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Castable.swift; sourceTree = "<group>"; };
 		8F4B52641B5BAA5700FDCBA7 /* ArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayTests.swift; sourceTree = "<group>"; };
@@ -192,6 +206,7 @@
 				8F53521F1BE41B7900E3563A /* DecodeDictionary.swift */,
 				8FFAB8111B7CFA9500E2D724 /* Parse.swift */,
 				8F87BCC31B592F0E00E53A8C /* DecodingError.swift */,
+				6580F0571BECE74B0033FFA7 /* RawRepresentableDecodable.swift */,
 				8FE7B5671B4C9FB900837609 /* Info.plist */,
 			);
 			path = Decodable;
@@ -208,6 +223,8 @@
 				8F53521C1BE4112900E3563A /* DictionaryTests.swift */,
 				8F87BCBA1B580CE200E53A8C /* ErrorPathTests.swift */,
 				FFE77E1E1B5391AD00E52F28 /* Repository.swift */,
+				6580F0541BECD5BC0033FFA7 /* ParseTests.swift */,
+				6580F05C1BECEF070033FFA7 /* RawRepresentableDecodableTests.swift */,
 				8FE7B5731B4C9FB900837609 /* Info.plist */,
 			);
 			path = DecodableTests;
@@ -216,6 +233,7 @@
 		FF0060991B54544A00D8CB77 /* JSONExamples */ = {
 			isa = PBXGroup;
 			children = (
+				6580F0501BECA7D90033FFA7 /* MissingOptionalKey.json */,
 				FF0060A01B5464FD00D8CB77 /* MissingKey.json */,
 				FF0060A11B5464FD00D8CB77 /* NoJsonObject.json */,
 				FF0060A21B5464FD00D8CB77 /* Repository.json */,
@@ -430,6 +448,7 @@
 			files = (
 				FF0060A51B5464FD00D8CB77 /* MissingKey.json in Resources */,
 				FF0060AB1B5464FD00D8CB77 /* TypeMismatch.json in Resources */,
+				6580F0531BECA7E60033FFA7 /* MissingOptionalKey.json in Resources */,
 				FF0060A91B5464FD00D8CB77 /* Repository.json in Resources */,
 				FF0060A71B5464FD00D8CB77 /* NoJsonObject.json in Resources */,
 			);
@@ -455,6 +474,7 @@
 			files = (
 				FF0060A41B5464FD00D8CB77 /* MissingKey.json in Resources */,
 				FF0060AA1B5464FD00D8CB77 /* TypeMismatch.json in Resources */,
+				6580F0521BECA7E50033FFA7 /* MissingOptionalKey.json in Resources */,
 				FF0060A81B5464FD00D8CB77 /* Repository.json in Resources */,
 				FF0060A61B5464FD00D8CB77 /* NoJsonObject.json in Resources */,
 			);
@@ -477,6 +497,7 @@
 				8F87BCC51B592F0E00E53A8C /* DecodingError.swift in Sources */,
 				8FFAB8131B7CFA9500E2D724 /* Parse.swift in Sources */,
 				8F012EF61BB5A920007D0B5C /* Castable.swift in Sources */,
+				6580F0591BECE74B0033FFA7 /* RawRepresentableDecodable.swift in Sources */,
 				8F8463371BC187160079C3E5 /* DecodeArray.swift in Sources */,
 				17FB810E1B5311840012F106 /* Decodable.swift in Sources */,
 				8F5352211BE41B7900E3563A /* DecodeDictionary.swift in Sources */,
@@ -489,6 +510,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F87BCBC1B580CE200E53A8C /* ErrorPathTests.swift in Sources */,
+				6580F05E1BECEF070033FFA7 /* RawRepresentableDecodableTests.swift in Sources */,
+				6580F0561BECD5BC0033FFA7 /* ParseTests.swift in Sources */,
 				FF00609F1B5454F400D8CB77 /* DecodableExtensionTests.swift in Sources */,
 				8F53521E1BE4112900E3563A /* DictionaryTests.swift in Sources */,
 				FF0060B11B546FB100D8CB77 /* DecodableOperatorsTests.swift in Sources */,
@@ -505,6 +528,7 @@
 				57FCDE5B1BA283C900130C48 /* DecodingError.swift in Sources */,
 				57FCDE5C1BA283C900130C48 /* Parse.swift in Sources */,
 				8F012EF81BB5A928007D0B5C /* Castable.swift in Sources */,
+				6580F05B1BECE74B0033FFA7 /* RawRepresentableDecodable.swift in Sources */,
 				8F8463391BC187160079C3E5 /* DecodeArray.swift in Sources */,
 				57FCDE5D1BA283C900130C48 /* Decodable.swift in Sources */,
 				8F5352231BE41B7900E3563A /* DecodeDictionary.swift in Sources */,
@@ -519,6 +543,7 @@
 				8F87BCC41B592F0E00E53A8C /* DecodingError.swift in Sources */,
 				8FFAB8121B7CFA9500E2D724 /* Parse.swift in Sources */,
 				8F012EF51BB5A920007D0B5C /* Castable.swift in Sources */,
+				6580F0581BECE74B0033FFA7 /* RawRepresentableDecodable.swift in Sources */,
 				8F8463361BC187160079C3E5 /* DecodeArray.swift in Sources */,
 				8FE7B57E1B4CA01400837609 /* Decodable.swift in Sources */,
 				8F5352201BE41B7900E3563A /* DecodeDictionary.swift in Sources */,
@@ -531,6 +556,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F87BCBB1B580CE200E53A8C /* ErrorPathTests.swift in Sources */,
+				6580F05D1BECEF070033FFA7 /* RawRepresentableDecodableTests.swift in Sources */,
+				6580F0551BECD5BC0033FFA7 /* ParseTests.swift in Sources */,
 				FF00609E1B5454F400D8CB77 /* DecodableExtensionTests.swift in Sources */,
 				8F53521D1BE4112900E3563A /* DictionaryTests.swift in Sources */,
 				FF0060B01B546FB100D8CB77 /* DecodableOperatorsTests.swift in Sources */,
@@ -547,6 +574,7 @@
 				D0DC547A1B78150900F79CB0 /* DecodingError.swift in Sources */,
 				8FFAB8141B7CFA9500E2D724 /* Parse.swift in Sources */,
 				8F012EF71BB5A920007D0B5C /* Castable.swift in Sources */,
+				6580F05A1BECE74B0033FFA7 /* RawRepresentableDecodable.swift in Sources */,
 				8F8463381BC187160079C3E5 /* DecodeArray.swift in Sources */,
 				D0DC54771B78150900F79CB0 /* Decodable.swift in Sources */,
 				8F5352221BE41B7900E3563A /* DecodeDictionary.swift in Sources */,

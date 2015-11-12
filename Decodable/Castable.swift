@@ -8,16 +8,16 @@
 
 import Foundation
 
-public protocol Castable: Decodable {}
+public protocol Castable: JSONInitiable {}
 
 extension Castable {
-    public static func decode(j: AnyObject) throws -> Self {
-        guard let result = j as? Self else {
-            let info = DecodingError.Info(object: j)
-            throw DecodingError.TypeMismatch(type: j.dynamicType, expectedType: self, info: info)
-            
+    
+    public init(json: AnyObject) throws {
+        guard let result = json as? Self else {
+            let info = DecodingError.Info(object: json)
+            throw DecodingError.TypeMismatch(type: json.dynamicType, expectedType: Self.self, info: info)
         }
-        return result
+        self = result
     }
 }
 

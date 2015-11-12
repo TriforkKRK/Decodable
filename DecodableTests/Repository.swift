@@ -27,28 +27,28 @@ struct Repository {
     let optionalActive: Bool?
 }
 
-extension Owner : Decodable {
-    static func decode(j: AnyObject) throws -> Owner {
-        return try Owner(
-            id: j => "id",
-            login: j => "login"
+extension Owner : JSONInitiable {
+    init(json: AnyObject) throws {
+        self = try Owner(
+            id: json => "id",
+            login: json => "login"
         )
     }
 }
 
-extension Repository : Decodable {
-    static func decode(j: AnyObject) throws -> Repository {
-        return try Repository(
-            id: j => "id",
-            name: j => "name",
-            description: j => "description",
-            htmlUrlString : j => "html_url",
-            owner: j => "owner",
-            coverage: j => "coverage",
-            files: j => "files",
-            optional: j => "optional",
-            active: j => "active",
-            optionalActive: j => "optionalActive"
+extension Repository : JSONInitiable {
+    init(json: AnyObject) throws {
+        self = try Repository(
+            id: json => "id",
+            name: json => "name",
+            description: json => "description",
+            htmlUrlString : json => "html_url",
+            owner: json => "owner",
+            coverage: json => "coverage",
+            files: json => "files",
+            optional: json => "optional",
+            active: json => "active",
+            optionalActive: json => "optionalActive"
         )
     }
 }
