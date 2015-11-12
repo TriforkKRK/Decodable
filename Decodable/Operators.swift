@@ -13,7 +13,7 @@ import Foundation
 infix operator => { associativity right precedence 150 }
 
 /// Try to decode as T, or throw
-public func => <T: Decodable>(lhs: AnyObject, rhs: String) throws -> T {
+public func => <T: JSONInitiable>(lhs: AnyObject, rhs: String) throws -> T {
     return try parse(lhs, path: rhs, decode: T.init)
 }
 
@@ -23,41 +23,41 @@ public func => (lhs: AnyObject, rhs: String) throws -> AnyObject {
 }
 
 /// Try to decode as T, or throw. Will return nil if the object at the keypath is NSNull.
-public func => <T: Decodable>(lhs: AnyObject, rhs: String) throws -> T? {
+public func => <T: JSONInitiable>(lhs: AnyObject, rhs: String) throws -> T? {
     return try parse(lhs, path: rhs, decode: catchNull(T.init))
 }
 
 // MARK: Arrays
 
 /// Try to decode as NSArray, and decode each element as T. Will throw if decoding of any element in the array throws. I.e, if one element is faulty the entire array is "thrown away".
-public func => <T: Decodable>(lhs: AnyObject, rhs: String) throws -> [T] {
+public func => <T: JSONInitiable>(lhs: AnyObject, rhs: String) throws -> [T] {
     return try parse(lhs, path: rhs, decode: decodeArray(T.init))
 }
 
 /// Try to decode as NSArray, and decode each element as T. Will return nil if the object at the keypath is NSNull. Will throw if decoding of any element in the array throws. I.e, if one element is faulty the entire array is "thrown away".
-public func => <T: Decodable>(lhs: AnyObject, rhs: String) throws -> [T]? {
+public func => <T: JSONInitiable>(lhs: AnyObject, rhs: String) throws -> [T]? {
     return try parse(lhs, path: rhs, decode: catchNull(decodeArray(T.init)))
 }
 
 /// Try to decode as NSArray, and decode each element as T or nil, if the element is NSNull.
-public func => <T: Decodable>(lhs: AnyObject, rhs: String) throws -> [T?] {
+public func => <T: JSONInitiable>(lhs: AnyObject, rhs: String) throws -> [T?] {
     return try parse(lhs, path: rhs, decode: decodeArray(catchNull(T.init)))
 }
 
 // MARK: Dictionary 
 
 /// Try to decode as NSDictionary. Map the dictionary using the decode function on K and T. Does not handle, or object to duplicate keys (last to be set wins).
-public func => <T: Decodable>(lhs: AnyObject, rhs: String) throws -> [String: T] {
+public func => <T: JSONInitiable>(lhs: AnyObject, rhs: String) throws -> [String: T] {
     return try parse(lhs, path: rhs, decode: decodeDictionary(String.init)(elementDecodeClosure: T.init))
 }
 
 /// Try to decode as NSDictionary?. Returns nil if object at path is NSNull. Map the dictionary using the decode function on K and T. Does not handle, or object to duplicate keys (last to be set wins).
-public func => <T: Decodable>(lhs: AnyObject, rhs: String) throws -> [String: T]? {
+public func => <T: JSONInitiable>(lhs: AnyObject, rhs: String) throws -> [String: T]? {
     return try parse(lhs, path: rhs, decode: catchNull(decodeDictionary(String.init)(elementDecodeClosure: T.init)))
 }
 
 /// Try to decode as NSDictionary?. Returns nil if object at path is NSNull. Maps key with K.init. This is a workaround to ensure that there is only one => overload without generic types to avoid ambiguity.
-public func => <K: Decodable>(lhs: AnyObject, rhs: String) throws -> [K: AnyObject]? {
+public func => <K: JSONInitiable>(lhs: AnyObject, rhs: String) throws -> [K: AnyObject]? {
     return try parse(lhs, path: rhs, decode: catchNull(decodeDictionary(K.init)(elementDecodeClosure: {$0})))
 }
 

@@ -13,7 +13,7 @@ private struct Color {
     let name: String
 }
 
-extension Color: Decodable {
+extension Color: JSONInitiable {
     init(json: AnyObject) throws {
         self = try Color(
             name: json => "name")
@@ -26,7 +26,7 @@ private struct Apple {
     
 }
 
-extension Apple: Decodable {
+extension Apple: JSONInitiable {
     init(json: AnyObject) throws {
         self = try Apple(
             id: json => "id",
@@ -38,7 +38,7 @@ private struct Tree {
     let apples: [Apple]
 }
 
-extension Tree: Decodable {
+extension Tree: JSONInitiable {
     init(json: AnyObject) throws {
         self = try Tree(
             apples: json => "apples")

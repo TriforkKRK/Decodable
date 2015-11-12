@@ -12,7 +12,7 @@
  * I could not find a way to implicitly declare RawRepresentable conforming to Decodable, what would make all enums Decodable automatically.
  * Because of that for an enum to be compatible with Decodable operators it must be declared as implementing Decodable protocol.
  */
-public extension RawRepresentable where Self:Decodable {
+public extension RawRepresentable where Self:JSONInitiable {
     
     init(json: AnyObject) throws {
         guard let rawValue = json as? Self.RawValue else {

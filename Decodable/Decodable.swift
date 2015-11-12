@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Decodable {
+public protocol JSONInitiable {
     init(json: AnyObject) throws
 }
 
@@ -22,13 +22,13 @@ extension NSDictionary {
     }
 }
 
-extension Array where Element: Decodable {
+extension Array where Element: JSONInitiable {
     init(json: AnyObject) throws {
         self =  try decodeArray(Element.init)(json: json)
     }
 }
 
-extension Dictionary where Key: Decodable, Value: Decodable {
+extension Dictionary where Key: JSONInitiable, Value: JSONInitiable {
     init(json: AnyObject) throws {
         self = try decodeDictionary(Key.init)(elementDecodeClosure: Value.init)(json: json)
     }

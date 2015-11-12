@@ -27,7 +27,7 @@ struct Repository {
     let optionalActive: Bool?
 }
 
-extension Owner : Decodable {
+extension Owner : JSONInitiable {
     init(json: AnyObject) throws {
         self = try Owner(
             id: json => "id",
@@ -36,7 +36,7 @@ extension Owner : Decodable {
     }
 }
 
-extension Repository : Decodable {
+extension Repository : JSONInitiable {
     init(json: AnyObject) throws {
         self = try Repository(
             id: json => "id",

@@ -9,7 +9,7 @@
 import XCTest
 @testable import Decodable
 
-enum CMYKColor: String, Decodable {
+enum CMYKColor: String, JSONInitiable {
     case Cyan = "Cyan"
     case Magenta = "Magenta"
     case Yellow = "Yellow"

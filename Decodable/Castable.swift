@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Castable: Decodable {}
+public protocol Castable: JSONInitiable {}
 
 extension Castable {
     
